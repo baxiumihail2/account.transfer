@@ -54,9 +54,10 @@ public class AccountTransferService {
 
     private Double getExchangeRate(String sourceAccountCurrency, String destinationAccountCurrency) {
 
-        var url = apiUrl + "?accessKey=" + apiKey + "&base=" + sourceAccountCurrency + "&symbols=" + destinationAccountCurrency;
+        var url = apiUrl + "?base=" + sourceAccountCurrency + "&symbols=" + destinationAccountCurrency;
 
         return webClient.get().uri(url)
+                .header("apikey", apiKey)
                 .accept(APPLICATION_JSON)
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<ExchangeRatesApiDto>() {

@@ -17,7 +17,6 @@ public class AccountTransferController {
 
     private final AccountTransferService accountTransferService;
 
-
     @PostMapping("/account-transfer")
     public ResponseEntity<String> makeTransfer(@RequestBody @Validated AccountTransferRequestDto request) {
 
