@@ -23,3 +23,6 @@ eg:
 }
 
 Console for DB available at http://localhost:8080/h2-console
+
+External api for FX rates only allow 250 request per day at the free tier.
+Afterwards the call will fail.
