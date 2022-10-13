@@ -1,7 +1,7 @@
-package com.gomspace.account.transfer.controller;
+package com.mihail.baciu.account.transfer.controller;
 
-import com.gomspace.account.transfer.dto.AccountTransferRequestDto;
-import com.gomspace.account.transfer.service.AccountTransferService;
+import com.mihail.baciu.account.transfer.dto.AccountTransferRequestDto;
+import com.mihail.baciu.account.transfer.service.AccountTransferService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

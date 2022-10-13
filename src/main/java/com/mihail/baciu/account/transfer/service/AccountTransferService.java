@@ -1,12 +1,11 @@
-package com.gomspace.account.transfer.service;
+package com.mihail.baciu.account.transfer.service;
 
-import com.gomspace.account.transfer.dto.AccountTransferRequestDto;
-import com.gomspace.account.transfer.dto.ExchangeRatesApiDto;
-import com.gomspace.account.transfer.repository.AccountRepository;
+import com.mihail.baciu.account.transfer.dto.AccountTransferRequestDto;
+import com.mihail.baciu.account.transfer.dto.ExchangeRatesApiDto;
+import com.mihail.baciu.account.transfer.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;

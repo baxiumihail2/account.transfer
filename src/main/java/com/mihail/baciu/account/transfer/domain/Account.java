@@ -1,4 +1,4 @@
-package com.gomspace.account.transfer.domain;
+package com.mihail.baciu.account.transfer.domain;
 
 import lombok.Data;
 

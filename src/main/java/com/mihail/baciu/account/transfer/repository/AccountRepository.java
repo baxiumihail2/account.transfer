@@ -1,6 +1,6 @@
-package com.gomspace.account.transfer.repository;
+package com.mihail.baciu.account.transfer.repository;
 
-import com.gomspace.account.transfer.domain.Account;
+import com.mihail.baciu.account.transfer.domain.Account;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

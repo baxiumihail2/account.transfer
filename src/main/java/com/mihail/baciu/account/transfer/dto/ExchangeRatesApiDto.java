@@ -1,4 +1,4 @@
-package com.gomspace.account.transfer.dto;
+package com.mihail.baciu.account.transfer.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

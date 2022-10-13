@@ -1,4 +1,4 @@
-package com.gomspace.account.transfer;
+package com.mihail.baciu.account.transfer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
