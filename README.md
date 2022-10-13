@@ -17,7 +17,9 @@ It is a post request with json body.
 
 eg:
 {
-"sourceAccountId": 11112,
+"sourceAccountId": 1111,
 "destinationAccountId": 2222,
 "amount": 100
 }
+
+Console for DB available at http://localhost:8080/h2-console
