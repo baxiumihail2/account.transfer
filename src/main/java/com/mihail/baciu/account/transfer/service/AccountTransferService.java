@@ -3,7 +3,6 @@ package com.mihail.baciu.account.transfer.service;
 import com.mihail.baciu.account.transfer.dto.AccountTransferRequestDto;
 import com.mihail.baciu.account.transfer.dto.ExchangeRatesApiDto;
 import com.mihail.baciu.account.transfer.repository.AccountRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
@@ -14,12 +13,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Objects;
 
+import static com.mihail.baciu.account.transfer.constants.Constants.*;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.PRECONDITION_REQUIRED;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 @Service
-@RequiredArgsConstructor
 public class AccountTransferService {
 
     private final AccountRepository accountRepository;
@@ -31,25 +30,30 @@ public class AccountTransferService {
     @Value("${external.api.url}")
     private String apiUrl;
 
+    public AccountTransferService(AccountRepository accountRepository, WebClient webClient) {
+        this.accountRepository = accountRepository;
+        this.webClient = WebClient.create();
+    }
+
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public String doTransfer(AccountTransferRequestDto accountTransferRequestDto) {
 
         var sourceAccount = accountRepository.getAccountByOwnerId(accountTransferRequestDto.getSourceAccountId());
         var destinationAccount = accountRepository.getAccountByOwnerId(accountTransferRequestDto.getDestinationAccountId());
         if (Objects.isNull(sourceAccount)) {
-            throw new ResponseStatusException(NOT_FOUND, "Source account was not found");
+            throw new ResponseStatusException(NOT_FOUND, DEBIT_ACC_NOT_FOUND);
         }
         if (Objects.isNull(destinationAccount)) {
-            throw new ResponseStatusException(NOT_FOUND, "Destination account was not found");
+            throw new ResponseStatusException(NOT_FOUND, CREDIT_ACC_NOT_FOUND);
         }
         if (sourceAccount.getBalance() < accountTransferRequestDto.getAmount()) {
-            throw new ResponseStatusException(PRECONDITION_REQUIRED, "Insufficient amount on debit account");
+            throw new ResponseStatusException(PRECONDITION_REQUIRED, INSUFFICIENT_BALANCE);
         }
         sourceAccount.setBalance(sourceAccount.getBalance() - accountTransferRequestDto.getAmount());
         destinationAccount.setBalance(destinationAccount.getBalance() + getFxAmount(sourceAccount.getCurrency(), destinationAccount.getCurrency(), accountTransferRequestDto.getAmount()));
         accountRepository.save(sourceAccount);
         accountRepository.save(destinationAccount);
-        return "Transfer succeeded!";
+        return RESPONSE_MESSAGE;
     }
 
     private Double getExchangeRate(String sourceAccountCurrency, String destinationAccountCurrency) {

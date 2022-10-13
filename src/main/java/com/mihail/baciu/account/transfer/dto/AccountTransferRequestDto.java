@@ -1,11 +1,15 @@
 package com.mihail.baciu.account.transfer.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AccountTransferRequestDto {
 
     @NotNull(message = "sourceAccountId is mandatory")
