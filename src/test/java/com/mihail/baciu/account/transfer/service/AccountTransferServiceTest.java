@@ -35,7 +35,6 @@ import static org.springframework.test.util.ReflectionTestUtils.setField;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {WebClientConfig.class, WebClient.class})
 public class AccountTransferServiceTest {
 
     private static final Gson GSON = new Gson();
