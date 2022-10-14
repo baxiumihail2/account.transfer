@@ -1,7 +1,6 @@
 package com.mihail.baciu.account.transfer.service;
 
 import com.google.gson.Gson;
-import com.mihail.baciu.account.transfer.config.WebClientConfig;
 import com.mihail.baciu.account.transfer.domain.Account;
 import com.mihail.baciu.account.transfer.dto.AccountTransferRequestDto;
 import com.mihail.baciu.account.transfer.dto.ExchangeRatesApiDto;
@@ -14,9 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
