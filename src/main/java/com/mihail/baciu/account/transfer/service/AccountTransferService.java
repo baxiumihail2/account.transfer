@@ -30,7 +30,7 @@ public class AccountTransferService {
     @Value("${external.api.url}")
     private String apiUrl;
 
-    public AccountTransferService(AccountRepository accountRepository, WebClient webClient) {
+    public AccountTransferService(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
         this.webClient = WebClient.create();
     }
